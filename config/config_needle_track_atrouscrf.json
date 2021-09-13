@@ -1,0 +1,51 @@
+{
+  "training": {
+    "arch_type": "us_needle",
+    "n_epoch": 1000,
+    "save_epoch_freq": 10,
+    "lr_policy": "step",
+    "lr_decay_iter": 256,
+    "batch_size": 10,
+    "preload_data": true
+  },
+  "visualization": {
+    "display_port": 8099,
+    "no_html": true,
+    "display_winsize": 256,
+    "display_id": 1,
+    "display_single_pane_ncols": 0
+  },
+  "data": {
+    "us_needle": "I:\\newPhD\\PhD\\NeedleTracking2\\data2\\",
+    "format": [".png"]
+  },
+  "augmentation": {
+    "us_needle": {
+      "shift": [0.1,0.1],
+      "rotate": 15.0,
+      "scale": [0.7,1.3],
+      "intensity": [1.0,1.0],
+      "random_flip_prob": 0.5,
+      "patch_size": [160,160,96]
+    }
+  },
+  "model": {
+    "model_type": "seg",
+    "continue_train": false,
+    "which_epoch": -1,
+    "model_name": "atrous_crf",
+    "tensor_dim": "2d",
+    "division_factor": 16,
+    "input_nc": 3,
+    "output_nc": 2,
+    "input_size": [224,224],
+    "lr": 1e-4,
+    "l2_reg_weight": 1e-6,
+    "feature_scale": 4,
+    "gpu_ids": [0],
+    "is_train": true,
+    "checkpoint_dir": ".\\chechpoints",
+    "experiment_name": "experiment_atrous_crf",
+    "criterion": "dice_loss"
+  }
+}
